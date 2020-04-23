@@ -61,6 +61,16 @@
   </div>
 
   <script>
+    const box = document.querySelector(".box");
+    box.addEventListener("click", openBox);
+
+    function openBox() {
+        this.classList.toggle("opening");
+
+      setTimeout(() => {
+        this.classList.toggle("open");
+      }, 400);
+    }
   </script>
 
 </body>
