@@ -24,7 +24,17 @@
 
   const first = 'Wes';
   const last = 'Bos';
+  const sentence = addDefinitions`Hello, my name is ${first} ${last} and I love to code ${'HTML'}, ${'CSS'}, and ${'JS'}`;
 
+  const bio = document.querySelector('.bio');
+  const p = document.createElement('p');
+
+  p.innerHTML = sentence;
+  bio.appendChild(p);
+
+  function addDefinitions(strings, ...evaluatedExpressions) {
+    return strings.map((string, i) => `${string} ${dict[evaluatedExpressions[i]] || evaluatedExpressions[i] || ''}`).join('');
+  }
 </script>
 </body>
 </html>
