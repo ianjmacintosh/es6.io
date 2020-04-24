@@ -33,7 +33,14 @@
   bio.appendChild(p);
 
   function addDefinitions(strings, ...evaluatedExpressions) {
-    return strings.map((string, i) => `${string} ${dict[evaluatedExpressions[i]] || evaluatedExpressions[i] || ''}`).join('');
+    // Make an array of expanded definitions to accompany the evaluated expressions
+    const expandedDefinitions = evaluatedExpressions.map(
+      // Long version if it exists, short version if not, or nothing
+      (string) => dict[string] || string || ''
+    );
+
+    return strings.map((string, i) => `${string} ${expandedDefinitions[i] || ''}`)
+      .join(''); // We love array methods here -- not commas
   }
 </script>
 </body>
