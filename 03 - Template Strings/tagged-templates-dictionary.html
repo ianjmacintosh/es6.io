@@ -36,10 +36,15 @@
     // Make an array of expanded definitions to accompany the evaluated expressions
     const expandedDefinitions = evaluatedExpressions.map(
       // Long version if it exists, short version if not, or nothing
-      (string) => dict[string] || string || ''
-    );
+      (string) => {
+        if (dict[string]) {
+          return `<abbr title="${dict[string]}">${string}</abbr>`;
+        } else {
+          return string;
+        }
+      });
 
-    return strings.map((string, i) => `${string} ${expandedDefinitions[i] || ''}`)
+    return strings.map((string, i) => `${string}${expandedDefinitions[i] || ''}`)
       .join(''); // We love array methods here -- not commas
   }
 </script>
