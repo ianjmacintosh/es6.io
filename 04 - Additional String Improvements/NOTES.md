@@ -1,0 +1,6 @@
+# Module 4: Additional String Improvements
+## New String Methods
+It's really nice to see these -- handling strings is something that I think lots of web developers do pretty regularly, and a lot of people are intimidated by regular expressions. Some day I hope to become a regular expression wizard, but I don't know how I'm going to get there, how I'm going to stay there, or how I'd be able to demonstrate it. But one thing I do know: regular expressions instill a sense of dread in nearly every software engineer I've met. So all that aside, how great to have `startsWith()`, `endsWith()`, `includes()`, and `repeat()`! It's pretty neat that I can pass an argument to `startsWith()` in order to move ahead on where the "start" of the string. I'm used to using `indexOf("hello") > -1` for `includes()` but having a specific tool for the job is pretty nice. Fun fact (Thanks Wes!) it's `includes()` instead of `contains()` due to collisions with MooTools.
+`repeat()` didn't seem that useful until Wes demonstrated the `leftPad` implementation.
+
+Super short! Even with writing out the `leftPad()` implementation (which was super easy and took like a minute) this was still a really short session. The video was 7 minutes long, and even with typing up these notes and doing the exercise I finished in just under 15 minutes.
