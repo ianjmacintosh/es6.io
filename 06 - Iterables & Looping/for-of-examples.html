@@ -18,6 +18,20 @@
 <script>
   const cuts = ['Chuck', 'Brisket', 'Shank', 'Short Rib'];
 
+  for (const [i, cutName] of cuts.entries()) {
+    console.log(`${cutName} is item #${i + 1} of the cuts`);
+  }
+
+  function addUpNumbers() {
+    let total = 0;
+    for (num of arguments) {
+      total += num;
+    }
+    console.log(total);
+  }
+
+  addUpNumbers(1,2,3,4);
+
   // for (const [i, cut] of cuts.entries()) {
   //   console.log(`${cut} is the ${i + 1} item`);
   // }
