@@ -30,7 +30,13 @@
   <h2 class="jump">SPREADS!</h2>
 
 <script>
-  
+  // Use map, a spread, and a querySelectorAll to do this
+  const headline = document.querySelector("h2");
+
+  headline.innerHTML = [...headline.textContent].map(
+    (letter) => {
+      return `<span>${letter}</span>`;
+    }).join("");
 </script>
 </body>
 </html>
