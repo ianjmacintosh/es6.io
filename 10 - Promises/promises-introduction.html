@@ -6,15 +6,73 @@
 </head>
 <body>
 <script>
-const postsPromise = fetch('https://wesbos.com/wp-json/wp/v2/posts');
+const cars = [
+    {
+        make: "Ford",
+        model: "GT40",
+        year: 1965
+    },
+    {
+        make: "Ford",
+        model: "F-150",
+        year: 2007
+    },
+    {
+        make: "Nissan",
+        model: "Maxima",
+        year: 2003
+    }
+];
 
-postsPromise
-  .then(data => data.json())
-  .then(data => { console.log(data) })
-  .catch((err) => {
-    console.error(err);
-  })
+const popularMusic = {
+    1965: "Wooly Bully",
+    2003: "In Da Club",
+    2007: "Crank That (Soulja Boy)"
+};
 
+function getCar(year) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const car = cars.find(car => car.year === year);
+      if (car) {
+        resolve(car);
+      } else {
+        reject(Error(`No car for ${year}`));
+      }
+    }, 2000);
+  });
+}
+
+function getSong(year) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const song = popularMusic[year];
+      if (song) {
+        resolve(song);
+      } else {
+        reject(Error(`No song for ${year}`));
+      }
+    }, 2000);
+  });
+}
+
+function getCarAdvertisement(year) {
+    let advertisement = {};
+    const carPromise = getCar(year);
+    const songPromise = getSong(year);
+
+    Promise
+        .all([carPromise, songPromise])
+        .then(([car, song]) => {
+            advertisement.make = car.make;
+            advertisement.model = car.model;
+
+            alert(`Play ${song} while showing a ${advertisement.make} ${advertisement.model}`);
+        })
+        .catch(err => {
+            console.error(err);
+        });
+}
 </script>
 </body>
 </html>
