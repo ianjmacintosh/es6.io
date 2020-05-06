@@ -6,22 +6,25 @@
 </head>
 <body>
 <script>
-  function Dog(name, breed) {
-    this.name = name;
-    this.breed = breed;
-  }
+class MovieCollection extends Array {
+    constructor(name, ...movies) { // See how neat the rest operator is??
+        super(...movies); // Bwaaahhh??? Spread operator!
+        this.name = name;
+    }
 
-  Dog.prototype.bark = function() {
-    console.log(`Bark Bark! My name is ${this.name}`);
-  };
+    add(movie) {
+      this.push(movie);
+    }
+}
 
-  Dog.prototype.cuddle = function() {
-    console.log(`I love you owner!`);
-  };
+const movies = new MovieCollection("Ian's Favorite Movies",
+"American Psycho", "Stepbrothers");
 
-  const snickers = new Dog('Snickers', 'King Charles');
-  const sunny = new Dog('Sunny', 'Golden Doodle');
+movies.add("1917");
 
+for (const movie of movies) { // Yeaaah for-of!
+  console.log(movie);
+}
 </script>
 </body>
 </html>
