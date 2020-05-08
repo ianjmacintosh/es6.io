@@ -8,7 +8,12 @@
 <script>
 
   function ajax(url) {
-    fetch(url).then(data => data.json()).then(data => dataGen.next(data))
+    fetch(url)
+    .then(data => data.json())
+    .then(data => {
+      return data;
+      dataGen.next();
+    });
   }
 
   function* steps() {
