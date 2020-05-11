@@ -7,7 +7,32 @@
 
 <body>
   <script>
+function catchErrors(fn) {
+    return function () {
+        return fn().catch((err) => {
+            console.error("Uh oh!");
+            console.error(err);
+        });
+    }
+}
 
+function breathe(duration) {
+    return new Promise((resolve, reject) => {
+        if (duration < 500) reject("Too short!");
+        setTimeout(() => resolve(`Done for ${duration}ms`), duration);
+    })
+}
+
+async function doBreathing() {
+    const res1 = await breathe(1000);
+    console.log(res1);
+    const res2 = await breathe(200);
+    console.log(res2);
+    const res3 = await breathe(3000);
+    console.log(res3);
+}
+
+const wrappedFunction = catchErrors(doBreathing);
   </script>
 </body>
 
